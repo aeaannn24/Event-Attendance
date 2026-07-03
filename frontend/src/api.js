@@ -1,6 +1,3 @@
-const baseUrl =
-  import.meta.env.PROD && import.meta.env.VITE_API_URL
-    ? import.meta.env.VITE_API_URL
-    : '/api';
+const baseUrl = import.meta.env.VITE_API_URL || '/api';
 
 export const API_BASE_URL = baseUrl;
