@@ -15,11 +15,14 @@ const LoginPage = ({ onLogin }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(`${API_BASE_URL}/auth/login`, { email, password });
+      const response = await axios.post(`${API_BASE_URL}/auth/login`, {
+        email: String(email).trim().toLowerCase(),
+        password,
+      });
       onLogin(response.data);
       navigate('/');
     } catch (err) {
-      setError(err.response?.data?.message || 'Invalid credentials. Please try again.');
+      setError(err.response?.data?.message || err.message || 'Invalid credentials. Please try again.');
     }
   };
 

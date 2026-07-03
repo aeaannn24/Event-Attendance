@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { API_BASE_URL } from '../api';
 
@@ -26,7 +26,7 @@ const SignupPage = ({ onLogin }) => {
     try {
       const response = await axios.post(`${API_BASE_URL}/auth/signup`, {
         name,
-        email,
+        email: String(email).trim().toLowerCase(),
         gender,
         password,
         role: normalizedRole,
@@ -34,7 +34,7 @@ const SignupPage = ({ onLogin }) => {
       onLogin(response.data);
       navigate('/');
     } catch (err) {
-      setError(err.response?.data?.message || 'Signup failed. Please try again.');
+      setError(err.response?.data?.message || err.message || 'Signup failed. Please try again.');
     }
   };
 
