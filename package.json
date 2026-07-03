@@ -1,0 +1,17 @@
+{
+  "name": "last-trial",
+  "version": "1.0.0",
+  "description": "A complete Event Attendance Management System built for schools, colleges, seminars, and organizational events.",
+  "main": "index.js",
+  "scripts": {
+    "backend": "npm --prefix backend run dev",
+    "frontend": "npm --prefix frontend run dev",
+    "dev": "npx concurrently \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}
