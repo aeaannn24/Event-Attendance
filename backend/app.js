@@ -12,6 +12,12 @@ const reportRoutes = require('./routes/reportRoutes');
 const { errorHandler, notFound } = require('./middleware/error');
 
 dotenv.config();
+if (!process.env.JWT_SECRET) {
+  console.warn('WARNING: JWT_SECRET is not configured. Sign-up/login will fail without it.');
+}
+if (!process.env.MONGODB_URI) {
+  console.warn('WARNING: MONGODB_URI is not configured. The backend cannot connect to MongoDB.');
+}
 connectDB();
 
 const app = express();
