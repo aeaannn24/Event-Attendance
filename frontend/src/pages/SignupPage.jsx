@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { API_BASE_URL } from '../api';
+import { AUTH_API_BASE_URL } from '../api';
 
 const SignupPage = ({ onLogin }) => {
   const { role } = useParams();
@@ -24,7 +24,7 @@ const SignupPage = ({ onLogin }) => {
     }
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/auth/signup`, {
+      const response = await axios.post(`${AUTH_API_BASE_URL}/signup`, {
         name,
         email: String(email).trim().toLowerCase(),
         gender,

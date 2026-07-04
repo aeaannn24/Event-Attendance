@@ -29,6 +29,7 @@ app.use(morgan('dev'));
 const uploadPath = process.env.UPLOAD_PATH || 'uploads';
 app.use(`/${uploadPath}`, express.static(path.join(__dirname, uploadPath)));
 
+app.use('/auth', authRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/students', studentRoutes);
