@@ -222,7 +222,7 @@ const SubmitAttendancePage = ({ user, events = [], attendanceRecords = [], atten
             <div className="rounded-[28px] border border-panel/70 bg-panel/70 p-5">
             <div className="grid gap-4 md:grid-cols-3">
               <label className="block text-sm font-semibold text-slate-100">
-                <span className="inline-flex items-center gap-2"><CalendarDays className="h-4 w-4 text-sky-300" /> Date</span>
+                <span className="inline-flex items-center gap-2"><CalendarDays className="h-4 w-4 text-accent" /> Date</span>
                 <input
                   type="date"
                   value={windowDate}
@@ -232,7 +232,7 @@ const SubmitAttendancePage = ({ user, events = [], attendanceRecords = [], atten
                 />
               </label>
               <label className="block text-sm font-semibold text-slate-100">
-                <span className="inline-flex items-center gap-2"><Clock3 className="h-4 w-4 text-sky-300" /> Time</span>
+                <span className="inline-flex items-center gap-2"><Clock3 className="h-4 w-4 text-accent" /> Time</span>
                 <input
                   type="time"
                   value={windowTime}
@@ -242,7 +242,7 @@ const SubmitAttendancePage = ({ user, events = [], attendanceRecords = [], atten
                 />
               </label>
               <label className="block text-sm font-semibold text-slate-100">
-                <span className="inline-flex items-center gap-2"><Timer className="h-4 w-4 text-sky-300" /> Limit</span>
+                <span className="inline-flex items-center gap-2"><Timer className="h-4 w-4 text-accent" /> Limit</span>
                 <input
                   type="number"
                   min="1"
@@ -375,7 +375,7 @@ const SubmitAttendancePage = ({ user, events = [], attendanceRecords = [], atten
                     {alreadySubmitted ? 'This event already has your attendance record.' : 'Upload a photo to complete your attendance submission.'}
                   </p>
                 </div>
-                <div className={`rounded-full px-3 py-2 text-xs font-semibold ${alreadySubmitted ? 'bg-sky-500/15 text-sky-300' : photoUploaded ? 'bg-emerald-500/15 text-emerald-300' : 'bg-slate-700/70 text-slate-300'}`}>
+                <div className={`rounded-full px-3 py-2 text-xs font-semibold ${alreadySubmitted ? 'bg-accent/15 text-accent' : photoUploaded ? 'bg-emerald-500/15 text-emerald-300' : 'bg-slate-700/70 text-slate-300'}`}>
                   {alreadySubmitted ? 'Submitted' : photoUploaded ? 'Ready' : 'Pending'}
                 </div>
               </div>
@@ -392,7 +392,7 @@ const SubmitAttendancePage = ({ user, events = [], attendanceRecords = [], atten
                 disabled={alreadySubmitted}
                 className="mt-4 inline-flex items-center gap-2 rounded-full border border-slate-800/70 bg-slate-900/90 px-4 py-3 text-sm font-semibold text-slate-100 transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-800/50 disabled:text-slate-500"
               >
-                <UploadCloud className="h-4 w-4 text-sky-300" />
+                <UploadCloud className="h-4 w-4 text-accent" />
                 Upload Photo
               </button>
               {!selectedEvent && (
@@ -413,7 +413,7 @@ const SubmitAttendancePage = ({ user, events = [], attendanceRecords = [], atten
                 type="button"
                 onClick={handleSubmit}
                 disabled={!isWindowOpen || alreadySubmitted || !hasAvailableEvents || !selectedEvent || !isSelectedEventOngoing}
-                className="mt-2 rounded-full bg-sky-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-400 disabled:cursor-not-allowed disabled:bg-slate-700"
+                className="mt-2 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-slate-950 transition hover:brightness-95 disabled:cursor-not-allowed disabled:bg-slate-700"
               >
                 {alreadySubmitted
                   ? 'Already Submitted'

@@ -163,17 +163,17 @@ const ReportsPage = ({ attendanceRecords = [], events = [], students = [] }) => 
 
   return (
     <div className="space-y-6">
-      <div className="rounded-3xl bg-white/95 p-6 shadow-xl shadow-slate-200/50">
+      <div className="rounded-3xl border border-panel/70 bg-panel/70 p-6 shadow-[0_28px_80px_rgba(7,26,47,0.35)]">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
-            <h1 className="text-2xl font-semibold text-slate-900">Reports</h1>
-            <p className="mt-2 text-sm text-slate-500">Export attendance analytics with gender counts, event totals, and daily summaries.</p>
+            <h1 className="text-2xl font-semibold text-white">Reports</h1>
+            <p className="mt-2 text-sm text-slate-400">Export attendance analytics with gender counts, event totals, and daily summaries.</p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <button onClick={() => setReportType('daily')} className={`rounded-3xl px-5 py-3 text-sm font-semibold transition ${reportType === 'daily' ? 'bg-primary text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}>
+            <button onClick={() => setReportType('daily')} className={`rounded-3xl px-5 py-3 text-sm font-semibold transition ${reportType === 'daily' ? 'bg-accent text-slate-950' : 'bg-panel/70 text-slate-300 hover:bg-panel/80'}`}>
               Daily Report
             </button>
-            <button onClick={() => setReportType('event')} className={`rounded-3xl px-5 py-3 text-sm font-semibold transition ${reportType === 'event' ? 'bg-primary text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}>
+            <button onClick={() => setReportType('event')} className={`rounded-3xl px-5 py-3 text-sm font-semibold transition ${reportType === 'event' ? 'bg-accent text-slate-950' : 'bg-panel/70 text-slate-300 hover:bg-panel/80'}`}>
               Event Report
             </button>
           </div>
@@ -187,18 +187,18 @@ const ReportsPage = ({ attendanceRecords = [], events = [], students = [] }) => 
           ['Male', totals.male],
           ['Female', totals.female],
         ].map(([label, value]) => (
-          <div key={label} className="rounded-3xl bg-white/95 p-5 shadow-xl shadow-slate-200/40">
-            <p className="text-sm text-slate-500">{label}</p>
-            <p className="mt-2 text-3xl font-semibold text-slate-900">{value}</p>
+          <div key={label} className="rounded-3xl border border-panel/70 bg-panel/70 p-5 shadow-[0_20px_50px_rgba(7,26,47,0.25)]">
+            <p className="text-sm text-slate-400">{label}</p>
+            <p className="mt-2 text-3xl font-semibold text-white">{value}</p>
           </div>
         ))}
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="rounded-3xl bg-white/95 p-6 shadow-xl shadow-slate-200/50">
-          <h2 className="text-lg font-semibold text-slate-900">Export Reports</h2>
+        <div className="rounded-3xl border border-panel/70 bg-panel/70 p-6 shadow-[0_28px_80px_rgba(7,26,47,0.35)]">
+          <h2 className="text-lg font-semibold text-white">Export Reports</h2>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            <button onClick={handlePrint} className="inline-flex items-center justify-center gap-2 rounded-3xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white hover:bg-blue-700">
+            <button onClick={handlePrint} className="inline-flex items-center justify-center gap-2 rounded-3xl bg-accent px-5 py-3 text-sm font-semibold text-slate-950 hover:brightness-95">
               <Download className="h-4 w-4" />
               Export PDF
             </button>
@@ -206,41 +206,41 @@ const ReportsPage = ({ attendanceRecords = [], events = [], students = [] }) => 
               <FileSpreadsheet className="h-4 w-4" />
               Export Excel
             </button>
-            <button onClick={handleExportCsv} className="rounded-3xl bg-slate-100 px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-200">Export CSV</button>
-            <button onClick={handlePrint} className="inline-flex items-center justify-center gap-2 rounded-3xl bg-slate-100 px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-200">
+            <button onClick={handleExportCsv} className="rounded-3xl bg-panel/70 px-5 py-3 text-sm font-semibold text-slate-300 hover:bg-panel/80">Export CSV</button>
+            <button onClick={handlePrint} className="inline-flex items-center justify-center gap-2 rounded-3xl bg-panel/70 px-5 py-3 text-sm font-semibold text-slate-300 hover:bg-panel/80">
               <Printer className="h-4 w-4" />
               Print
             </button>
           </div>
-          <p className="mt-5 rounded-3xl bg-slate-50 px-4 py-3 text-sm text-slate-600">{message}</p>
+          <p className="mt-5 rounded-3xl bg-panel/60 px-4 py-3 text-sm text-slate-400">{message}</p>
         </div>
 
-        <div className="rounded-3xl bg-white/95 p-6 shadow-xl shadow-slate-200/50">
-          <h2 className="text-lg font-semibold text-slate-900">Report Summary</h2>
-          <div className="mt-6 space-y-4 text-sm text-slate-700">
-            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4">
-              <p className="font-semibold text-slate-900">Selected Report</p>
+        <div className="rounded-3xl border border-panel/70 bg-panel/70 p-6 shadow-[0_28px_80px_rgba(7,26,47,0.35)]">
+          <h2 className="text-lg font-semibold text-white">Report Summary</h2>
+          <div className="mt-6 space-y-4 text-sm text-slate-300">
+            <div className="rounded-3xl border border-panel/70 bg-panel/60 p-4">
+              <p className="font-semibold text-white">Selected Report</p>
               <p>{title}</p>
             </div>
-            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4">
-              <p className="font-semibold text-slate-900">Coverage</p>
+            <div className="rounded-3xl border border-panel/70 bg-panel/60 p-4">
+              <p className="font-semibold text-white">Coverage</p>
               <p>{totals.students} students, {totals.events} events, {totals.records} attendance records.</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="overflow-hidden rounded-3xl bg-white/95 shadow-xl shadow-slate-200/50">
+      <div className="overflow-hidden rounded-3xl border border-panel/70 bg-panel/70 shadow-[0_28px_80px_rgba(7,26,47,0.35)]">
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-slate-200 text-left text-sm">
-            <thead className="bg-slate-50 text-slate-600">
+          <table className="min-w-full divide-y divide-panel/70 text-left text-sm">
+            <thead className="bg-panel/60 text-slate-400">
               <tr>{headers.map((header) => <th key={header} className="px-5 py-4">{header}</th>)}</tr>
             </thead>
-            <tbody className="divide-y divide-slate-200 bg-white">
+            <tbody className="divide-y divide-panel/70 bg-panel/80">
               {reportRows.map((row, index) => (
                 <tr key={`${reportType}-${index}`}>
                   {rowValues(row).map((value, valueIndex) => (
-                    <td key={`${reportType}-${index}-${valueIndex}`} className="px-5 py-4 text-slate-700">{value}</td>
+                    <td key={`${reportType}-${index}-${valueIndex}`} className="px-5 py-4 text-slate-300">{value}</td>
                   ))}
                 </tr>
               ))}

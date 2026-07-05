@@ -150,7 +150,7 @@ const ChatWidget = ({ user, students = [], messages = [], onSendMessage, onDelet
 
           <div className="grid max-h-[34rem] grid-cols-[135px_1fr]">
             <aside className="border-r border-panel/70 bg-panel/60 p-3">
-              <div className="flex items-center gap-2 rounded-full border border-slate-800 bg-slate-950 px-3 py-2">
+              <div className="flex items-center gap-2 rounded-full border border-panel/70 bg-panel/60 px-3 py-2">
                 <Search className="h-3.5 w-3.5 text-slate-500" />
                 <input
                   value={contactSearch}
@@ -222,7 +222,7 @@ const ChatWidget = ({ user, students = [], messages = [], onSendMessage, onDelet
                         {reactionValues.length > 0 && (
                           <div className="mt-2 flex flex-wrap gap-1">
                             {reactionValues.map((reaction, index) => (
-                              <span key={`${message.id}-${reaction}-${index}`} className="rounded-full bg-white/10 px-2 py-0.5 text-xs">{reaction}</span>
+                              <span key={`${message.id}-${reaction}-${index}`} className="rounded-full bg-panel/60 px-2 py-0.5 text-xs">{reaction}</span>
                             ))}
                           </div>
                         )}
@@ -260,7 +260,7 @@ const ChatWidget = ({ user, students = [], messages = [], onSendMessage, onDelet
                 )}
               </div>
 
-              <form onSubmit={handleSubmit} className="border-t border-slate-800 bg-slate-900/95 p-3">
+              <form onSubmit={handleSubmit} className="border-t border-panel/70 bg-panel/80 p-3">
                 {replyMessage && (
                   <div className="mb-2 flex items-center justify-between gap-2 rounded-2xl bg-panel/70 px-3 py-2 text-xs text-slate-300">
                     <span className="truncate">Replying to {replyMessage.senderName}: {replyMessage.text}</span>

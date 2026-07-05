@@ -35,24 +35,24 @@ const LoginPage = ({ onLogin }) => {
   const altRouteLabel = normalizedRole === 'admin' ? 'Student Login' : 'Admin Login';
 
   return (
-    <div className="min-h-screen bg-slate-950 px-4 py-10 text-slate-900">
-      <div className="mx-auto grid max-w-6xl overflow-hidden rounded-[36px] bg-white shadow-2xl shadow-slate-900/10 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="relative hidden bg-gradient-to-br from-slate-800 via-indigo-700 to-blue-600 p-10 text-white lg:block">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.15),_transparent_40%)]" />
+    <div className="min-h-screen bg-slate-950 px-4 py-10 text-slate-100">
+      <div className="mx-auto grid max-w-6xl overflow-hidden rounded-[36px] border border-panel/70 bg-panel/70 shadow-[0_28px_80px_rgba(7,26,47,0.45)] lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="relative hidden bg-gradient-to-br from-brand to-panel p-10 text-white lg:block">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(6,182,212,0.16),_transparent_35%)]" />
           <div className="relative z-10 flex h-full flex-col justify-between">
             <div>
-              <p className="text-sm uppercase tracking-[0.28em] text-slate-300">AttendancePro</p>
-              <h2 className="mt-8 text-4xl font-semibold">Professional attendance for students and staff</h2>
+              <p className="text-sm uppercase tracking-[0.28em] text-accent/80">AttendancePro</p>
+              <h2 className="mt-8 text-4xl font-semibold text-white">Professional attendance for students and staff</h2>
               <p className="mt-4 max-w-md text-sm leading-7 text-slate-200/85">
                 Fast, secure access to attendance dashboards, event check-ins, and student records.
               </p>
             </div>
             <div className="mt-10 space-y-4">
-              <div className="rounded-3xl border border-white/10 bg-white/10 p-5 backdrop-blur-sm">
+              <div className="rounded-3xl border border-accent/10 bg-accent/10 p-5 backdrop-blur-sm">
                 <p className="text-sm font-semibold text-white">Secure & reliable</p>
                 <p className="mt-1 text-sm text-slate-200/85">All sign-ins are protected with encrypted authentication.</p>
               </div>
-              <div className="rounded-3xl border border-white/10 bg-white/10 p-5 backdrop-blur-sm">
+              <div className="rounded-3xl border border-accent/10 bg-accent/10 p-5 backdrop-blur-sm">
                 <p className="text-sm font-semibold text-white">Designed for education</p>
                 <p className="mt-1 text-sm text-slate-200/85">Supports both admins and students with tailored dashboards.</p>
               </div>
@@ -63,62 +63,62 @@ const LoginPage = ({ onLogin }) => {
         <div className="p-8 sm:p-10">
           <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
             <div>
-              <p className="text-sm uppercase tracking-[0.28em] text-blue-600">{roleName} Portal</p>
-              <h1 className="mt-3 text-3xl font-semibold text-slate-900">{title}</h1>
+              <p className="text-sm uppercase tracking-[0.28em] text-accent/80">{roleName} Portal</p>
+              <h1 className="mt-3 text-3xl font-semibold text-white">{title}</h1>
             </div>
-            <div className="text-sm text-slate-500">
+            <div className="text-sm text-slate-400">
               New here?{' '}
-              <Link to={`/signup/${normalizedRole}`} className="font-semibold text-slate-900 hover:text-slate-700">
+              <Link to={`/signup/${normalizedRole}`} className="font-semibold text-accent hover:text-white">
                 Create account
               </Link>
             </div>
           </div>
-          <p className="max-w-xl text-sm leading-6 text-slate-600">{description}</p>
+          <p className="max-w-xl text-sm leading-6 text-slate-400">{description}</p>
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-5">
             <div>
-              <label className="mb-2 block text-sm font-medium text-slate-700">Email</label>
+              <label className="mb-2 block text-sm font-medium text-slate-300">Email</label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                className="w-full rounded-3xl border border-panel/70 bg-panel/60 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
               />
             </div>
             <div>
-              <label className="mb-2 block text-sm font-medium text-slate-700">Password</label>
+              <label className="mb-2 block text-sm font-medium text-slate-300">Password</label>
               <div className="relative">
                 <input
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="w-full rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 pr-28 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                  className="w-full rounded-3xl border border-panel/70 bg-panel/60 px-4 py-3 pr-28 text-sm text-slate-100 outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword((prev) => !prev)}
-                  className="absolute inset-y-0 right-3 flex items-center rounded-full bg-slate-100 px-3 text-sm text-slate-600 transition hover:bg-slate-200"
+                  className="absolute inset-y-0 right-3 flex items-center rounded-full bg-panel/70 px-3 text-sm text-slate-300 transition hover:bg-panel/80"
                 >
                   {showPassword ? 'Hide' : 'Show'}
                 </button>
               </div>
             </div>
-            {error && <div className="rounded-3xl bg-rose-100 px-4 py-3 text-sm text-rose-700">{error}</div>}
-            <button className="w-full rounded-3xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800">
+            {error && <div className="rounded-3xl bg-rose-500/10 px-4 py-3 text-sm text-rose-200">{error}</div>}
+            <button className="w-full rounded-3xl bg-accent px-5 py-3 text-sm font-semibold text-white transition hover:brightness-95">
               Sign In
             </button>
           </form>
 
-          <div className="mt-8 flex flex-col gap-3 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-8 flex flex-col gap-3 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between">
             <span>
               Need a different login?{' '}
-              <Link to={altRoute} className="font-semibold text-slate-900 hover:text-slate-700">
+              <Link to={altRoute} className="font-semibold text-accent hover:text-white">
                 {altRouteLabel}
               </Link>
             </span>
-            <span className="text-slate-400">Secure access powered by AttendancePro</span>
+            <span className="text-slate-500">Secure access powered by AttendancePro</span>
           </div>
         </div>
       </div>

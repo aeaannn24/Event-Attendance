@@ -10,10 +10,10 @@ const AttendanceDetailsPage = ({ attendanceRecords = [], events = [] }) => {
 
   if (!record) {
     return (
-      <div className="rounded-[32px] border border-slate-800/70 bg-slate-950/90 p-8 text-slate-100">
+      <div className="rounded-[32px] border border-panel/70 bg-panel/70 p-8 text-slate-100">
         <h1 className="text-2xl font-semibold">Record not found</h1>
         <p className="mt-2 text-sm text-slate-400">The attendance record may have been deleted or is no longer available.</p>
-        <Link to="/attendance" className="mt-6 inline-flex rounded-full bg-sky-500 px-5 py-3 text-sm font-semibold text-white">
+        <Link to="/attendance" className="mt-6 inline-flex rounded-full bg-accent px-5 py-3 text-sm font-semibold text-slate-950">
           Back to Attendance
         </Link>
       </div>
@@ -25,7 +25,7 @@ const AttendanceDetailsPage = ({ attendanceRecords = [], events = [] }) => {
       <div className="rounded-[32px] border border-slate-800/70 bg-slate-950/90 p-6 shadow-[0_30px_70px_rgba(15,23,42,0.28)]">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
-            <Link to="/attendance" className="inline-flex items-center gap-2 text-sm font-semibold text-sky-300 hover:text-sky-200">
+            <Link to="/attendance" className="inline-flex items-center gap-2 text-sm font-semibold text-accent/80 hover:text-accent/60">
               <ArrowLeft className="h-4 w-4" />
               Back to records
             </Link>
@@ -35,7 +35,7 @@ const AttendanceDetailsPage = ({ attendanceRecords = [], events = [] }) => {
           <button
             type="button"
             onClick={() => window.print()}
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-sky-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-400"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-slate-950 transition hover:brightness-95"
           >
             <Printer className="h-4 w-4" />
             Print Record
@@ -93,7 +93,7 @@ const AttendanceDetailsPage = ({ attendanceRecords = [], events = [] }) => {
                 max="100"
                 value={photoSize}
                 onChange={(event) => setPhotoSize(event.target.value)}
-                className="mt-2 block w-56 accent-sky-400"
+                className="mt-2 block w-56 accent-accent"
               />
             </label>
           </div>

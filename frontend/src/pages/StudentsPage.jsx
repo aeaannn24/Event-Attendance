@@ -72,7 +72,7 @@ const StudentsPage = ({ user, students = [], onAddStudent, onDeleteStudent }) =>
       <div className="rounded-[32px] border border-panel/70 bg-panel/70 p-6 shadow-[0_30px_70px_rgba(7,26,47,0.28)] glass-card">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <p className="text-xs uppercase tracking-[0.28em] text-sky-300">Student Management</p>
+            <p className="text-xs uppercase tracking-[0.28em] text-accent/80">Student Management</p>
             <h1 className="mt-2 text-3xl font-semibold text-slate-100">Students</h1>
             <p className="mt-2 max-w-2xl text-sm text-slate-400">
               Add students, search the roster, and safely remove records from the attendance system.
@@ -110,7 +110,7 @@ const StudentsPage = ({ user, students = [], onAddStudent, onDeleteStudent }) =>
       {showForm && isAdmin && (
         <form onSubmit={handleSubmit} className="rounded-[32px] border border-panel/70 bg-panel/70 p-6 shadow-[0_24px_60px_rgba(7,26,47,0.3)]">
           <div className="mb-5 flex items-center gap-3 text-slate-100">
-            <UserPlus className="h-5 w-5 text-sky-300" />
+            <UserPlus className="h-5 w-5 text-accent" />
             <h2 className="text-xl font-semibold">New Student</h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
@@ -149,7 +149,7 @@ const StudentsPage = ({ user, students = [], onAddStudent, onDeleteStudent }) =>
               <select
                 value={form.gender}
                 onChange={(event) => handleChange('gender', event.target.value)}
-                className="mt-2 w-full rounded-3xl border border-slate-800/70 bg-slate-900/90 px-4 py-3 text-slate-100 outline-none focus:border-sky-400"
+                className="mt-2 w-full rounded-3xl border border-slate-800/70 bg-slate-900/90 px-4 py-3 text-slate-100 outline-none focus:border-accent"
               >
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -160,7 +160,7 @@ const StudentsPage = ({ user, students = [], onAddStudent, onDeleteStudent }) =>
               <select
                 value={form.yearLevel}
                 onChange={(event) => handleChange('yearLevel', event.target.value)}
-                className="mt-2 w-full rounded-3xl border border-slate-800/70 bg-slate-900/90 px-4 py-3 text-slate-100 outline-none focus:border-sky-400"
+                className="mt-2 w-full rounded-3xl border border-slate-800/70 bg-slate-900/90 px-4 py-3 text-slate-100 outline-none focus:border-accent"
               >
                 {['1', '2', '3', '4'].map((year) => (
                   <option key={year} value={year}>Year {year}</option>

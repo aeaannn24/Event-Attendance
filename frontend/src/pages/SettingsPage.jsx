@@ -87,7 +87,7 @@ const SettingsPage = ({ user, onUpdateProfile }) => {
       <div className="rounded-[32px] border border-panel/70 bg-gradient-to-br from-brand to-panel p-6 shadow-[0_30px_70px_rgba(7,26,47,0.35)]">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-sky-300">User Info Panel</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-accent/80">User Info Panel</p>
             <h1 className="mt-3 text-3xl font-semibold text-white">Profile & Identity</h1>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
               Edit your profile, identity details, and contact information used across AttendancePro.
@@ -112,7 +112,7 @@ const SettingsPage = ({ user, onUpdateProfile }) => {
       <div className="grid gap-6 xl:grid-cols-[0.85fr_1.15fr]">
         <section className="rounded-[32px] border border-panel/70 bg-panel/70 p-6 shadow-[0_24px_60px_rgba(7,26,47,0.25)]">
           <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
-            <BadgeCheck className="h-5 w-5 text-sky-300" />
+            <BadgeCheck className="h-5 w-5 text-accent" />
             Account Summary
           </h2>
           <div className="mt-6 space-y-4">
@@ -142,17 +142,17 @@ const SettingsPage = ({ user, onUpdateProfile }) => {
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-slate-300">
                 <span className="inline-flex items-center gap-2">
-                  <span className="text-sky-300"><Camera className="h-4 w-4" /></span>
+                  <span className="text-accent"><Camera className="h-4 w-4" /></span>
                   Profile Picture
                 </span>
                 <div className="mt-2 flex flex-wrap items-center gap-4 rounded-[28px] border border-slate-800/70 bg-slate-900/80 p-4">
                   {form.profilePhoto ? (
                     <img src={form.profilePhoto} alt="Profile preview" className="h-20 w-20 rounded-3xl object-cover" />
                   ) : (
-                    <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-sky-500 text-xl font-bold text-white">{initials}</div>
+                    <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-accent text-xl font-bold text-white">{initials}</div>
                   )}
                   <div className="flex flex-wrap gap-3">
-                    <input type="file" accept="image/*" onChange={handlePhotoChange} className="max-w-full text-sm text-slate-300 file:mr-3 file:rounded-full file:border-0 file:bg-sky-500 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white" />
+                    <input type="file" accept="image/*" onChange={handlePhotoChange} className="max-w-full text-sm text-slate-300 file:mr-3 file:rounded-full file:border-0 file:bg-accent file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white" />
                     {form.profilePhoto && (
                       <button type="button" onClick={() => handleChange('profilePhoto', '')} className="rounded-full border border-slate-700 bg-slate-950 px-4 py-2 text-sm font-semibold text-slate-200">
                         Remove

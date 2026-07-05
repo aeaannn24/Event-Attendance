@@ -91,7 +91,7 @@ const SubmitAttendanceCard = () => {
             onClick={() => setShowTimeSettings(!showTimeSettings)}
             className="mt-6 inline-flex items-center gap-2 rounded-full border border-panel/70 bg-panel/70 px-4 py-3 text-sm font-semibold text-slate-200 transition hover:bg-panel/80"
           >
-            <AlertTriangle className="h-4 w-4 text-sky-300" />
+            <AlertTriangle className="h-4 w-4 text-accent" />
             Set Time
           </button>
 
@@ -130,21 +130,21 @@ const SubmitAttendanceCard = () => {
           )}
         </div>
 
-        <div className="rounded-[28px] border border-slate-800/70 bg-slate-900/80 p-5">
-          <label className="block text-sm font-semibold uppercase tracking-[0.28em] text-slate-500">Attendance for</label>
+        <div className="rounded-[28px] border border-panel/70 bg-panel/70 p-5">
+          <label className="block text-sm font-semibold uppercase tracking-[0.28em] text-slate-400">Attendance for</label>
           <select
             value={selectedEvent}
             onChange={(e) => setSelectedEvent(e.target.value)}
             className="mt-4 w-full rounded-[24px] border border-panel/70 bg-panel/70 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-accent"
           >
             {availableEvents.map((eventName) => (
-              <option key={eventName} value={eventName} className="bg-slate-950 text-slate-100">
+              <option key={eventName} value={eventName} className="bg-panel/70 text-slate-100">
                 {eventName}
               </option>
             ))}
           </select>
 
-          <div className="mt-6 rounded-[28px] border border-slate-800/70 bg-slate-950/90 p-4">
+          <div className="mt-6 rounded-[28px] border border-panel/70 bg-panel/70 p-4">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-sm font-semibold text-slate-100">Attach Photo</p>
@@ -170,7 +170,7 @@ const SubmitAttendanceCard = () => {
                 onClick={handleUploadClick}
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-panel/70 bg-panel/70 px-4 py-3 text-sm font-semibold text-slate-100 transition hover:bg-panel/80"
               >
-                <UploadCloud className="h-4 w-4 text-sky-300" />
+                <UploadCloud className="h-4 w-4 text-accent" />
                 Upload Photo
               </button>
               <button

@@ -193,7 +193,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
 
   return (
     <div className="space-y-6">
-      <div className="rounded-3xl bg-gradient-to-br from-brand to-panel p-6 shadow-[0_28px_80px_rgba(7,26,47,0.5)] border border-white/8">
+      <div className="rounded-3xl bg-gradient-to-br from-brand to-panel p-6 shadow-[0_28px_80px_rgba(7,26,47,0.5)] border border-panel/70">
         <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
           <div className="max-w-2xl">
             <p className="text-sm uppercase tracking-[0.3em] text-accent/80">Event Details</p>
@@ -202,15 +202,15 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
               Maintain a polished event schedule and broadcast updates directly to students from the AttendancePro admin panel.
             </p>
             <div className="mt-6 flex flex-wrap gap-3 text-sm text-slate-300">
-              <span className="inline-flex items-center gap-2 rounded-2xl bg-white/5 px-3 py-2">
+              <span className="inline-flex items-center gap-2 rounded-2xl bg-panel/60 px-3 py-2">
                 <MapPin className="h-4 w-4 text-accent" />
                 {activeEvent?.location || 'No location'}
               </span>
-              <span className="inline-flex items-center gap-2 rounded-2xl bg-white/5 px-3 py-2">
+              <span className="inline-flex items-center gap-2 rounded-2xl bg-panel/60 px-3 py-2">
                 <CalendarDays className="h-4 w-4 text-accent" />
                 {activeEvent?.date || 'No date'}
               </span>
-              <span className="inline-flex items-center gap-2 rounded-2xl bg-white/5 px-3 py-2 text-slate-100">
+              <span className="inline-flex items-center gap-2 rounded-2xl bg-panel/60 px-3 py-2 text-slate-100">
                 Status: {activeEvent?.status || 'none'}
               </span>
             </div>
@@ -250,7 +250,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
               </p>
             </div>
             <div className="rounded-3xl bg-panel/70 p-4">
-              <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Announcement</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-accent/80">Announcement</p>
               <p className="mt-2 text-sm leading-6 text-slate-300 break-words whitespace-pre-line">{attendanceWindow.announcement || 'No announcement yet.'}</p>
             </div>
           </div>
@@ -314,7 +314,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
                 min="1"
                 value={eventForm.durationMinutes}
                 onChange={(event) => handleEventFormChange('durationMinutes', event.target.value)}
-                className="mt-2 w-full rounded-3xl border border-slate-800/80 bg-slate-900/90 px-4 py-3 text-white outline-none transition focus:border-sky-400"
+                className="mt-2 w-full rounded-3xl border border-slate-800/80 bg-slate-900/90 px-4 py-3 text-white outline-none transition focus:border-accent"
               />
             </label>
             <label className="block text-sm font-medium text-slate-300">
@@ -322,7 +322,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
               <select
                 value={eventForm.status}
                 onChange={(event) => handleEventFormChange('status', event.target.value)}
-                className="mt-2 w-full rounded-3xl border border-slate-800/80 bg-slate-900/90 px-4 py-3 text-white outline-none transition focus:border-sky-400"
+                className="mt-2 w-full rounded-3xl border border-slate-800/80 bg-slate-900/90 px-4 py-3 text-white outline-none transition focus:border-accent"
               >
                 <option value="upcoming">Upcoming</option>
                 <option value="ongoing">Ongoing</option>
@@ -360,21 +360,21 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
       )}
 
       <div className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
-        <div className="rounded-3xl bg-panel/70 p-6 shadow-[0_28px_60px_rgba(7,26,47,0.35)] border border-white/10">
+        <div className="rounded-3xl bg-panel/70 p-6 shadow-[0_28px_60px_rgba(7,26,47,0.35)] border border-panel/60">
           <div className="mb-6 flex items-center justify-between gap-4">
             <div>
-              <p className="text-sm uppercase tracking-[0.28em] text-sky-300">Set Event Time & Date</p>
+              <p className="text-sm uppercase tracking-[0.28em] text-accent/80">Set Event Time & Date</p>
               <h2 className="mt-2 text-xl font-semibold text-white">Admin-only scheduling</h2>
             </div>
-            <span className="rounded-full bg-slate-900/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-sky-200">
+            <span className="rounded-full bg-panel/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent/90">
               {isAdmin ? 'Admin Access' : 'Read only'}
             </span>
           </div>
 
           <div className="grid gap-4 lg:grid-cols-3">
-            <label className="group flex flex-col gap-3 rounded-3xl border border-slate-800/80 bg-slate-900/90 p-4 transition hover:border-sky-400/50">
+            <label className="group flex flex-col gap-3 rounded-3xl border border-panel/70 bg-panel/70 p-4 transition hover:border-accent/50">
               <span className="inline-flex items-center gap-2 text-sm font-medium text-slate-200">
-                <CalendarDays className="h-4 w-4 text-sky-300" />
+                <CalendarDays className="h-4 w-4 text-accent" />
                 Date
               </span>
               <input
@@ -385,9 +385,9 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
                 className="w-full rounded-3xl border border-panel/70 bg-panel/70 px-4 py-3 text-white outline-none transition focus:border-accent"
               />
             </label>
-            <label className="group flex flex-col gap-3 rounded-3xl border border-slate-800/80 bg-slate-900/90 p-4 transition hover:border-sky-400/50">
+            <label className="group flex flex-col gap-3 rounded-3xl border border-panel/70 bg-panel/70 p-4 transition hover:border-accent/50">
               <span className="inline-flex items-center gap-2 text-sm font-medium text-slate-200">
-                <Clock3 className="h-4 w-4 text-sky-300" />
+                <Clock3 className="h-4 w-4 text-accent" />
                 Time
               </span>
               <input
@@ -398,9 +398,9 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
                 className="w-full rounded-3xl border border-panel/70 bg-panel/70 px-4 py-3 text-white outline-none transition focus:border-accent"
               />
             </label>
-            <label className="group flex flex-col gap-3 rounded-3xl border border-slate-800/80 bg-slate-900/90 p-4 transition hover:border-sky-400/50">
+            <label className="group flex flex-col gap-3 rounded-3xl border border-panel/70 bg-panel/70 p-4 transition hover:border-accent/50">
               <span className="inline-flex items-center gap-2 text-sm font-medium text-slate-200">
-                <Clock3 className="h-4 w-4 text-sky-300" />
+                <Clock3 className="h-4 w-4 text-accent" />
                 Time Limit
               </span>
               <div className="grid grid-cols-2 gap-2">
@@ -441,7 +441,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
           </div>
         </div>
 
-        <div className="rounded-3xl bg-panel/70 p-6 shadow-[0_28px_60px_rgba(7,26,47,0.35)] border border-white/10">
+        <div className="rounded-3xl bg-panel/70 p-6 shadow-[0_28px_60px_rgba(7,26,47,0.35)] border border-panel/60">
           <div className="mb-6 flex items-center justify-between gap-4">
             <div>
               <p className="text-sm uppercase tracking-[0.28em] text-accent">Send Announcement</p>
@@ -474,10 +474,10 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
         </div>
       </div>
 
-      <div className="rounded-3xl bg-panel/80 p-6 shadow-[0_24px_50px_rgba(7,26,47,0.35)] border border-white/10 text-slate-100">
+      <div className="rounded-3xl bg-panel/80 p-6 shadow-[0_24px_50px_rgba(7,26,47,0.35)] border border-panel/60 text-slate-100">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <p className="text-sm uppercase tracking-[0.28em] text-sky-300">Event announcement</p>
+            <p className="text-sm uppercase tracking-[0.28em] text-accent/80">Event announcement</p>
             <h2 className="mt-2 text-xl font-semibold text-white">Latest student notification</h2>
           </div>
           <p className="text-sm text-slate-400">{statusMessage}</p>
