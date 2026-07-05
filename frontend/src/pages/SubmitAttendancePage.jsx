@@ -99,6 +99,18 @@ const SubmitAttendancePage = ({ user, events = [], attendanceRecords = [], atten
   const eventDisplayStatus = isCurrentEventClosed || isSelectedEventFinished ? 'Completed' : selectedEventObject?.status === 'ongoing' ? 'Ongoing' : selectedEventObject?.status || 'Unknown';
   const eventSubmissionState = alreadySubmitted ? 'Submitted' : isCurrentEventClosed ? 'Incomplete' : 'Pending';
 
+  const handleEventSelect = (nextEvent) => {
+    setSelectedEvent(nextEvent);
+    const hasRecord = attendanceRecords.some(
+      (record) => record.studentId === currentStudentId && record.eventName === nextEvent
+    );
+    setStatusMessage(
+      hasRecord
+        ? `Already submitted for ${nextEvent}. Please wait for another event to submit attendance.`
+        : 'Upload your photo proof and submit attendance.'
+    );
+  };
+
   const handlePhotoUpload = (event) => {
     const file = event.target.files?.[0];
     if (!file) {
@@ -323,18 +335,7 @@ const SubmitAttendancePage = ({ user, events = [], attendanceRecords = [], atten
             </div>
             <select
               value={selectedEvent}
-              onChange={(event) => {
-                const nextEvent = event.target.value;
-                setSelectedEvent(nextEvent);
-                const hasRecord = attendanceRecords.some(
-                  (record) => record.studentId === currentStudentId && record.eventName === nextEvent
-                );
-                setStatusMessage(
-                  hasRecord
-                    ? `Already submitted for ${nextEvent}. Please wait for another event to submit attendance.`
-                    : 'Upload your photo proof and submit attendance.'
-                );
-              }}
+              onChange={(event) => handleEventSelect(event.target.value)}
               className="mt-4 w-full rounded-[24px] border border-slate-800/70 bg-slate-950/90 px-4 py-3 text-slate-100 outline-none"
               disabled={isAdmin}
             >
