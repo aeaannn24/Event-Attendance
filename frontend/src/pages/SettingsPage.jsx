@@ -84,7 +84,7 @@ const SettingsPage = ({ user, onUpdateProfile }) => {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-[32px] border border-slate-800/70 bg-gradient-to-br from-slate-950 via-slate-900 to-sky-950 p-6 shadow-[0_30px_70px_rgba(15,23,42,0.35)]">
+      <div className="rounded-[32px] border border-panel/70 bg-gradient-to-br from-brand to-panel p-6 shadow-[0_30px_70px_rgba(7,26,47,0.35)]">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-sky-300">User Info Panel</p>
@@ -93,11 +93,11 @@ const SettingsPage = ({ user, onUpdateProfile }) => {
               Edit your profile, identity details, and contact information used across AttendancePro.
             </p>
           </div>
-          <div className="flex items-center gap-4 rounded-[28px] border border-white/10 bg-white/10 p-4">
+          <div className="flex items-center gap-4 rounded-[28px] border border-panel/60 bg-panel/60 p-4">
             {form.profilePhoto ? (
               <img src={form.profilePhoto} alt={form.name || 'Profile'} className="h-16 w-16 rounded-3xl object-cover shadow-lg shadow-sky-950/30" />
-            ) : (
-              <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-sky-500 text-xl font-bold text-white shadow-lg shadow-sky-950/30">
+              ) : (
+              <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-accent text-xl font-bold text-white shadow-lg shadow-sky-950/30">
                 {initials}
               </div>
             )}
@@ -110,7 +110,7 @@ const SettingsPage = ({ user, onUpdateProfile }) => {
       </div>
 
       <div className="grid gap-6 xl:grid-cols-[0.85fr_1.15fr]">
-        <section className="rounded-[32px] border border-slate-800/70 bg-slate-950/90 p-6 shadow-[0_24px_60px_rgba(15,23,42,0.25)]">
+        <section className="rounded-[32px] border border-panel/70 bg-panel/70 p-6 shadow-[0_24px_60px_rgba(7,26,47,0.25)]">
           <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
             <BadgeCheck className="h-5 w-5 text-sky-300" />
             Account Summary
@@ -122,18 +122,18 @@ const SettingsPage = ({ user, onUpdateProfile }) => {
             <SummaryCard icon={<ShieldCheck className="h-5 w-5" />} label="Role" value={user?.role || 'student'} />
             <SummaryCard icon={<CreditCard className="h-5 w-5" />} label={isAdmin ? 'Admin Identity' : 'Student ID'} value={form.identityId || 'Not set'} />
           </div>
-          <div className="mt-6 rounded-[28px] border border-sky-500/20 bg-sky-500/10 p-4 text-sm leading-6 text-sky-100">
+          <div className="mt-6 rounded-[28px] border border-accent/20 bg-accent/10 p-4 text-sm leading-6 text-accent">
             {message}
           </div>
         </section>
 
-        <form onSubmit={handleSubmit} className="rounded-[32px] border border-slate-800/70 bg-slate-950/90 p-6 shadow-[0_24px_60px_rgba(15,23,42,0.25)]">
+        <form onSubmit={handleSubmit} className="rounded-[32px] border border-panel/70 bg-panel/70 p-6 shadow-[0_24px_60px_rgba(7,26,47,0.25)]">
           <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
               <h2 className="text-lg font-semibold text-white">Edit Profile</h2>
               <p className="mt-2 text-sm text-slate-400">Changes are saved locally and reflected in the topbar/dashboard immediately.</p>
             </div>
-            <span className="rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-sky-200">
+            <span className="rounded-full bg-panel/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
               {isAdmin ? 'Admin Profile' : 'Student Profile'}
             </span>
           </div>
@@ -249,7 +249,7 @@ const SettingsPage = ({ user, onUpdateProfile }) => {
             <p className="text-sm text-slate-500">Your role is protected and cannot be changed here.</p>
             <button
               type="submit"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-sky-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-400"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:brightness-95"
             >
               <Save className="h-4 w-4" />
               Save Profile
@@ -262,8 +262,8 @@ const SettingsPage = ({ user, onUpdateProfile }) => {
 };
 
 const SummaryCard = ({ icon, label, value }) => (
-  <div className="flex items-start gap-3 rounded-[28px] border border-slate-800/70 bg-slate-900/80 p-4">
-    <div className="rounded-2xl bg-sky-500/10 p-3 text-sky-300">{icon}</div>
+  <div className="flex items-start gap-3 rounded-[28px] border border-panel/70 bg-panel/70 p-4">
+    <div className="rounded-2xl bg-accent/10 p-3 text-accent">{icon}</div>
     <div className="min-w-0">
       <p className="text-xs uppercase tracking-[0.2em] text-slate-500">{label}</p>
       <p className="mt-1 truncate text-sm font-semibold text-slate-100">{value}</p>
@@ -274,7 +274,7 @@ const SummaryCard = ({ icon, label, value }) => (
 const Field = ({ label, icon, children }) => (
   <label className="block text-sm font-medium text-slate-300">
     <span className="inline-flex items-center gap-2">
-      <span className="text-sky-300">{icon}</span>
+      <span className="text-accent">{icon}</span>
       {label}
     </span>
     {children}

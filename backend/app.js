@@ -39,4 +39,28 @@ app.use('/api/reports', reportRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
+// Debug helper: when enabled, print registered routes to logs on startup.
+// Set SHOW_ROUTES=true in the deployment environment to enable this.
+if (process.env.SHOW_ROUTES === 'true') {
+  try {
+    const routes = [];
+    app._router.stack.forEach((layer) => {
+      if (layer.route && layer.route.path) {
+        const methods = Object.keys(layer.route.methods).map((m) => m.toUpperCase()).join(',');
+        routes.push(`${methods} ${layer.route.path}`);
+      } else if (layer.name === 'router' && layer.handle && layer.handle.stack) {
+        layer.handle.stack.forEach((r) => {
+          if (r.route && r.route.path) {
+            const methods = Object.keys(r.route.methods).map((m) => m.toUpperCase()).join(',');
+            routes.push(`${methods} ${r.route.path}`);
+          }
+        });
+      }
+    });
+    console.log('Registered routes:\n' + routes.join('\n'));
+  } catch (err) {
+    console.warn('Could not enumerate routes:', err.message);
+  }
+}
+
 module.exports = app;

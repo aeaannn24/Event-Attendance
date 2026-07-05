@@ -39,7 +39,7 @@ const Sidebar = ({ user }) => {
         <button
           aria-label="Open menu"
           onClick={() => setOpen(true)}
-          className="fixed left-0 top-1/2 z-30 -translate-y-1/2 rounded-r-xl bg-slate-900/80 p-2 text-white shadow-lg lg:hidden"
+          className="fixed left-0 top-1/2 z-30 -translate-y-1/2 rounded-r-xl bg-brand/80 p-2 text-accent shadow-lg lg:hidden"
           style={{ transform: 'translateY(-50%)' }}
         >
           <Menu className="h-6 w-6" />
@@ -47,7 +47,7 @@ const Sidebar = ({ user }) => {
       )}
 
       <aside
-        className={`fixed left-0 top-0 z-20 h-full w-72 border-r border-slate-800/70 bg-slate-950/90 p-6 backdrop-blur-xl shadow-[24px_0_80px_rgba(15,23,42,0.32)] transform transition-transform duration-300 ${
+        className={`fixed left-0 top-0 z-20 h-full w-72 border-r border-panel/70 bg-gradient-to-b from-brand to-panel p-6 backdrop-blur-xl shadow-[24px_0_80px_rgba(7,26,47,0.6)] transform transition-transform duration-300 ${
           open ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         }`}
       >
@@ -60,7 +60,7 @@ const Sidebar = ({ user }) => {
           <button
             aria-label="Close menu"
             onClick={() => setOpen(false)}
-            className="ml-4 rounded-full bg-slate-800/60 p-2 text-slate-200 hover:bg-slate-800 lg:hidden"
+            className="ml-4 rounded-full bg-panel/60 p-2 text-slate-200 hover:bg-panel lg:hidden"
           >
             <X className="h-4 w-4" />
           </button>
@@ -75,7 +75,9 @@ const Sidebar = ({ user }) => {
                 to={item.path}
                 className={({ isActive }) =>
                   `flex items-center gap-3 rounded-3xl px-4 py-3 text-sm font-semibold transition duration-200 ${
-                    isActive ? 'bg-slate-800 text-sky-200 shadow-[0_20px_40px_rgba(14,165,233,0.16)]' : 'text-slate-400 hover:bg-slate-900/80 hover:text-slate-100'
+                    isActive
+                      ? 'bg-gradient-to-r from-brand/70 via-accent/10 to-transparent text-accent shadow-lg border-l-4 border-accent'
+                      : 'text-slate-400 hover:bg-slate-900/60 hover:text-slate-100'
                   }`
                 }
                 onClick={() => {

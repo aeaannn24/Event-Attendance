@@ -206,7 +206,7 @@ const SubmitAttendancePage = ({ user, events = [], attendanceRecords = [], atten
   };
 
   return (
-    <div className="rounded-[32px] border border-slate-800/70 bg-slate-950/80 p-6 shadow-[0_40px_90px_rgba(15,23,42,0.32)] glass-card">
+    <div className="rounded-[32px] border border-panel/70 bg-panel/70 p-6 shadow-[0_40px_90px_rgba(7,26,47,0.32)] glass-card">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-xs uppercase tracking-[0.28em] text-slate-500">Submit Attendance</p>
@@ -219,7 +219,7 @@ const SubmitAttendancePage = ({ user, events = [], attendanceRecords = [], atten
 
       <div className="mt-6 grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
         <section className="space-y-6">
-          <div className="rounded-[28px] border border-slate-800/70 bg-slate-900/80 p-5">
+            <div className="rounded-[28px] border border-panel/70 bg-panel/70 p-5">
             <div className="grid gap-4 md:grid-cols-3">
               <label className="block text-sm font-semibold text-slate-100">
                 <span className="inline-flex items-center gap-2"><CalendarDays className="h-4 w-4 text-sky-300" /> Date</span>
@@ -227,7 +227,7 @@ const SubmitAttendancePage = ({ user, events = [], attendanceRecords = [], atten
                   type="date"
                   value={windowDate}
                   onChange={(event) => setWindowDate(event.target.value)}
-                  className="mt-3 w-full rounded-[24px] border border-slate-800/70 bg-slate-950/90 px-4 py-3 text-slate-100 outline-none"
+                    className="mt-3 w-full rounded-[24px] border border-panel/70 bg-panel/70 px-4 py-3 text-slate-100 outline-none"
                   disabled={!isAdmin}
                 />
               </label>
@@ -237,7 +237,7 @@ const SubmitAttendancePage = ({ user, events = [], attendanceRecords = [], atten
                   type="time"
                   value={windowTime}
                   onChange={(event) => setWindowTime(event.target.value)}
-                  className="mt-3 w-full rounded-[24px] border border-slate-800/70 bg-slate-950/90 px-4 py-3 text-slate-100 outline-none"
+                  className="mt-3 w-full rounded-[24px] border border-panel/70 bg-panel/70 px-4 py-3 text-slate-100 outline-none"
                   disabled={!isAdmin}
                 />
               </label>
@@ -249,13 +249,13 @@ const SubmitAttendancePage = ({ user, events = [], attendanceRecords = [], atten
                   max="180"
                   value={durationMinutes}
                   onChange={(event) => setDurationMinutes(event.target.value)}
-                  className="mt-3 w-full rounded-[24px] border border-slate-800/70 bg-slate-950/90 px-4 py-3 text-slate-100 outline-none"
+                  className="mt-3 w-full rounded-[24px] border border-panel/70 bg-panel/70 px-4 py-3 text-slate-100 outline-none"
                   disabled={!isAdmin}
                 />
               </label>
             </div>
 
-            <div className="mt-5 rounded-[24px] border border-slate-800/70 bg-slate-950/90 px-4 py-4 text-slate-100">
+              <div className="mt-5 rounded-[24px] border border-panel/70 bg-panel/70 px-4 py-4 text-slate-100">
               <p className="text-sm text-slate-400">Attendance window</p>
               <p className="mt-2 text-lg font-semibold text-slate-100">{start ? formatDateTime(start) : 'Invalid start time'}</p>
               <p className="mt-1 text-sm text-slate-500">Deadline: {end ? formatDateTime(end) : 'Invalid deadline'}</p>
@@ -263,7 +263,7 @@ const SubmitAttendancePage = ({ user, events = [], attendanceRecords = [], atten
                 {isWindowOpen ? formatRemaining(remaining) : isBeforeWindow ? `Opens in ${formatRemaining(opensIn)}` : 'Closed'}
               </p>
               {selectedEventObject && (
-                <div className="mt-4 rounded-2xl border border-slate-800/60 bg-slate-900/80 p-3">
+                  <div className="mt-4 rounded-2xl border border-panel/60 bg-panel/70 p-3">
                   <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Event status</p>
                   <p className="mt-2 text-sm font-semibold text-slate-100">{selectedEventObject.title}</p>
                   <p className="mt-1 text-xs text-slate-400">Status: {selectedEventObject.status}</p>
@@ -271,7 +271,7 @@ const SubmitAttendancePage = ({ user, events = [], attendanceRecords = [], atten
                 </div>
               )}
               {alreadySubmitted && submittedRecord && (
-                <div className="mt-4 rounded-2xl border border-slate-800/60 bg-slate-900/80 p-3">
+                  <div className="mt-4 rounded-2xl border border-panel/60 bg-panel/70 p-3">
                   <p className="text-xs text-slate-400">You already submitted for this event</p>
                   <p className="mt-1 text-sm font-semibold text-slate-100">Submitted: {submittedRecord.submissionDate} · {submittedRecord.submissionTime}</p>
                   <div className="mt-3 flex items-center gap-3">
@@ -284,11 +284,11 @@ const SubmitAttendancePage = ({ user, events = [], attendanceRecords = [], atten
           </div>
 
           {isAdmin && (
-            <div className="flex flex-wrap gap-3 rounded-[28px] border border-slate-800/70 bg-slate-950/95 p-5 text-sm text-slate-300">
-              <button type="button" onClick={handleSaveWindow} className="rounded-full bg-sky-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-400">
+            <div className="flex flex-wrap gap-3 rounded-[28px] border border-panel/70 bg-panel/70 p-5 text-sm text-slate-300">
+              <button type="button" onClick={handleSaveWindow} className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:brightness-95">
                 Save Window
               </button>
-              <button type="button" onClick={handlePublishAnnouncement} className="rounded-full border border-slate-800/70 bg-slate-900/90 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:bg-slate-800">
+              <button type="button" onClick={handlePublishAnnouncement} className="rounded-full border border-panel/70 bg-panel/70 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:bg-panel/80">
                 Publish Announcement
               </button>
               <p className="flex-1 text-sm text-slate-500">Admin controls define when students can submit attendance.</p>

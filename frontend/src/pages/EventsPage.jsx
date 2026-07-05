@@ -193,21 +193,21 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
 
   return (
     <div className="space-y-6">
-      <div className="rounded-3xl bg-gradient-to-br from-slate-950 via-slate-900 to-sky-950 p-6 shadow-[0_28px_80px_rgba(15,23,42,0.5)] border border-white/10">
+      <div className="rounded-3xl bg-gradient-to-br from-brand to-panel p-6 shadow-[0_28px_80px_rgba(7,26,47,0.5)] border border-white/8">
         <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
           <div className="max-w-2xl">
-            <p className="text-sm uppercase tracking-[0.3em] text-sky-300/80">Event Details</p>
+            <p className="text-sm uppercase tracking-[0.3em] text-accent/80">Event Details</p>
             <h1 className="mt-3 text-3xl font-semibold text-white">{activeEvent?.title || 'No event selected'}</h1>
             <p className="mt-3 text-sm leading-7 text-slate-300">
               Maintain a polished event schedule and broadcast updates directly to students from the AttendancePro admin panel.
             </p>
             <div className="mt-6 flex flex-wrap gap-3 text-sm text-slate-300">
               <span className="inline-flex items-center gap-2 rounded-2xl bg-white/5 px-3 py-2">
-                <MapPin className="h-4 w-4 text-sky-300" />
+                <MapPin className="h-4 w-4 text-accent" />
                 {activeEvent?.location || 'No location'}
               </span>
               <span className="inline-flex items-center gap-2 rounded-2xl bg-white/5 px-3 py-2">
-                <CalendarDays className="h-4 w-4 text-sky-300" />
+                <CalendarDays className="h-4 w-4 text-accent" />
                 {activeEvent?.date || 'No date'}
               </span>
               <span className="inline-flex items-center gap-2 rounded-2xl bg-white/5 px-3 py-2 text-slate-100">
@@ -223,7 +223,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
                     setIsEditingEvent((open) => !open);
                   }}
                   disabled={!activeEvent}
-                  className="inline-flex items-center gap-2 rounded-full bg-sky-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-400 disabled:cursor-not-allowed disabled:bg-slate-700"
+                  className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-white transition hover:brightness-95 disabled:cursor-not-allowed disabled:bg-panel"
                 >
                   <PencilLine className="h-4 w-4" />
                   Set Location & Event
@@ -231,7 +231,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
                 <button
                   type="button"
                   onClick={handleCreateEvent}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:bg-white/15"
+                  className="inline-flex items-center gap-2 rounded-full border border-panel/60 bg-panel/60 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:bg-panel/80"
                 >
                   <Plus className="h-4 w-4" />
                   New Event
@@ -239,8 +239,8 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
               </div>
             )}
           </div>
-          <div className="grid min-w-[220px] gap-3 rounded-3xl bg-white/10 p-4 text-sm text-slate-200 shadow-xl shadow-slate-950/20">
-            <div className="rounded-3xl bg-slate-900/80 p-4">
+          <div className="grid min-w-[220px] gap-3 rounded-3xl bg-panel/60 p-4 text-sm text-slate-200 shadow-lg">
+            <div className="rounded-3xl bg-panel/70 p-4">
               <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Current Time</p>
               <p className="mt-2 text-lg font-semibold text-white">{selectedDate} · {selectedTime}</p>
               <p className="mt-1 text-xs text-slate-400">Limit: {formatDuration(durationMinutes)}</p>
@@ -249,7 +249,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
                 {isWindowOpen ? formatRemaining(remaining) : isBeforeWindow ? `Opens in ${formatRemaining(opensIn)}` : 'Closed'}
               </p>
             </div>
-            <div className="rounded-3xl bg-slate-900/80 p-4">
+            <div className="rounded-3xl bg-panel/70 p-4">
               <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Announcement</p>
               <p className="mt-2 text-sm leading-6 text-slate-300 break-words whitespace-pre-line">{attendanceWindow.announcement || 'No announcement yet.'}</p>
             </div>
@@ -258,14 +258,14 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
       </div>
 
       {isEditingEvent && isAdmin && (
-        <div className="rounded-3xl border border-sky-500/20 bg-slate-950 p-6 shadow-[0_28px_60px_rgba(15,23,42,0.35)]">
+        <div className="rounded-3xl border border-accent/20 bg-panel p-6 shadow-[0_28px_60px_rgba(7,26,47,0.35)]">
           <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <p className="text-sm uppercase tracking-[0.28em] text-sky-300">Set Location & Event</p>
+              <p className="text-sm uppercase tracking-[0.28em] text-accent">Set Location & Event</p>
               <h2 className="mt-2 text-xl font-semibold text-white">Professional event setup</h2>
               <p className="mt-2 text-sm text-slate-400">Update the event name, venue, event date, and status shown across dashboards.</p>
             </div>
-            <span className="rounded-full bg-sky-500/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-sky-200">
+            <span className="rounded-full bg-accent/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent/90">
               Admin editable
             </span>
           </div>
@@ -277,7 +277,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
                 value={eventForm.title}
                 onChange={(event) => handleEventFormChange('title', event.target.value)}
                 placeholder="e.g. Leadership Seminar"
-                className="mt-2 w-full rounded-3xl border border-slate-800/80 bg-slate-900/90 px-4 py-3 text-white outline-none transition focus:border-sky-400"
+                className="mt-2 w-full rounded-3xl border border-panel/70 bg-panel/70 px-4 py-3 text-white outline-none transition focus:border-accent"
               />
             </label>
             <label className="block text-sm font-medium text-slate-300 lg:col-span-2">
@@ -286,7 +286,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
                 value={eventForm.location}
                 onChange={(event) => handleEventFormChange('location', event.target.value)}
                 placeholder="e.g. Main Auditorium"
-                className="mt-2 w-full rounded-3xl border border-slate-800/80 bg-slate-900/90 px-4 py-3 text-white outline-none transition focus:border-sky-400"
+                className="mt-2 w-full rounded-3xl border border-panel/70 bg-panel/70 px-4 py-3 text-white outline-none transition focus:border-accent"
               />
             </label>
             <label className="block text-sm font-medium text-slate-300">
@@ -295,7 +295,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
                 type="date"
                 value={eventForm.date}
                 onChange={(event) => handleEventFormChange('date', event.target.value)}
-                className="mt-2 w-full rounded-3xl border border-slate-800/80 bg-slate-900/90 px-4 py-3 text-white outline-none transition focus:border-sky-400"
+                className="mt-2 w-full rounded-3xl border border-panel/70 bg-panel/70 px-4 py-3 text-white outline-none transition focus:border-accent"
               />
             </label>
             <label className="block text-sm font-medium text-slate-300">
@@ -304,7 +304,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
                 type="time"
                 value={eventForm.time}
                 onChange={(event) => handleEventFormChange('time', event.target.value)}
-                className="mt-2 w-full rounded-3xl border border-slate-800/80 bg-slate-900/90 px-4 py-3 text-white outline-none transition focus:border-sky-400"
+                className="mt-2 w-full rounded-3xl border border-panel/70 bg-panel/70 px-4 py-3 text-white outline-none transition focus:border-accent"
               />
             </label>
             <label className="block text-sm font-medium text-slate-300">
@@ -333,7 +333,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
               <button
                 type="button"
                 onClick={handleSaveEventDetails}
-                className="rounded-full bg-sky-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-400"
+                className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:brightness-95"
               >
                 Save Event Details
               </button>
@@ -360,7 +360,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
       )}
 
       <div className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
-        <div className="rounded-3xl bg-slate-950 p-6 shadow-[0_28px_60px_rgba(15,23,42,0.35)] border border-white/10">
+        <div className="rounded-3xl bg-panel/70 p-6 shadow-[0_28px_60px_rgba(7,26,47,0.35)] border border-white/10">
           <div className="mb-6 flex items-center justify-between gap-4">
             <div>
               <p className="text-sm uppercase tracking-[0.28em] text-sky-300">Set Event Time & Date</p>
@@ -382,7 +382,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
                 value={selectedDate}
                 onChange={(e) => setSelectedDate(e.target.value)}
                 disabled={!isAdmin}
-                className="w-full rounded-3xl border border-slate-800/70 bg-slate-950/90 px-4 py-3 text-white outline-none transition focus:border-sky-400"
+                className="w-full rounded-3xl border border-panel/70 bg-panel/70 px-4 py-3 text-white outline-none transition focus:border-accent"
               />
             </label>
             <label className="group flex flex-col gap-3 rounded-3xl border border-slate-800/80 bg-slate-900/90 p-4 transition hover:border-sky-400/50">
@@ -395,7 +395,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
                 value={selectedTime}
                 onChange={(e) => setSelectedTime(e.target.value)}
                 disabled={!isAdmin}
-                className="w-full rounded-3xl border border-slate-800/70 bg-slate-950/90 px-4 py-3 text-white outline-none transition focus:border-sky-400"
+                className="w-full rounded-3xl border border-panel/70 bg-panel/70 px-4 py-3 text-white outline-none transition focus:border-accent"
               />
             </label>
             <label className="group flex flex-col gap-3 rounded-3xl border border-slate-800/80 bg-slate-900/90 p-4 transition hover:border-sky-400/50">
@@ -410,7 +410,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
                   value={durationParts.hours}
                   onChange={(e) => handleDurationPartChange('hours', e.target.value)}
                   disabled={!isAdmin}
-                  className="w-full rounded-3xl border border-slate-800/70 bg-slate-950/90 px-4 py-3 text-white outline-none transition focus:border-sky-400"
+                  className="w-full rounded-3xl border border-panel/70 bg-panel/70 px-4 py-3 text-white outline-none transition focus:border-accent"
                   aria-label="Hours"
                 />
                 <input
@@ -420,7 +420,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
                   value={durationParts.minutes}
                   onChange={(e) => handleDurationPartChange('minutes', e.target.value)}
                   disabled={!isAdmin}
-                  className="w-full rounded-3xl border border-slate-800/70 bg-slate-950/90 px-4 py-3 text-white outline-none transition focus:border-sky-400"
+                  className="w-full rounded-3xl border border-panel/70 bg-panel/70 px-4 py-3 text-white outline-none transition focus:border-accent"
                   aria-label="Minutes"
                 />
               </div>
@@ -434,20 +434,20 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
               type="button"
               onClick={handleSaveEventTime}
               disabled={!isAdmin}
-              className="inline-flex items-center justify-center rounded-full bg-sky-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-400 disabled:cursor-not-allowed disabled:bg-slate-700"
+              className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:brightness-95 disabled:cursor-not-allowed disabled:bg-panel"
             >
               Set Time
             </button>
           </div>
         </div>
 
-        <div className="rounded-3xl bg-slate-950 p-6 shadow-[0_28px_60px_rgba(15,23,42,0.35)] border border-white/10">
+        <div className="rounded-3xl bg-panel/70 p-6 shadow-[0_28px_60px_rgba(7,26,47,0.35)] border border-white/10">
           <div className="mb-6 flex items-center justify-between gap-4">
             <div>
-              <p className="text-sm uppercase tracking-[0.28em] text-sky-300">Send Announcement</p>
+              <p className="text-sm uppercase tracking-[0.28em] text-accent">Send Announcement</p>
               <h2 className="mt-2 text-xl font-semibold text-white">Broadcast a message</h2>
             </div>
-            <Megaphone className="h-6 w-6 text-sky-300" />
+            <Megaphone className="h-6 w-6 text-accent" />
           </div>
 
           <label className="block text-sm font-medium text-slate-300">Announcement message</label>
@@ -456,7 +456,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
             onChange={(e) => setAnnouncementMessage(e.target.value)}
             disabled={!isAdmin}
             rows={8}
-            className="mt-3 w-full resize-none rounded-[28px] border border-slate-800/80 bg-slate-950/90 px-4 py-4 text-sm text-white outline-none transition focus:border-sky-400"
+            className="mt-3 w-full resize-none rounded-[28px] border border-panel/70 bg-panel/70 px-4 py-4 text-sm text-white outline-none transition focus:border-accent"
             placeholder="Write your announcement here..."
           />
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -465,7 +465,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
               type="button"
               onClick={handleSendAnnouncement}
               disabled={!isAdmin}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-sky-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-400 disabled:cursor-not-allowed disabled:bg-slate-700"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:brightness-95 disabled:cursor-not-allowed disabled:bg-panel"
             >
               <Send className="h-4 w-4" />
               Send Announcement
@@ -474,7 +474,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
         </div>
       </div>
 
-      <div className="rounded-3xl bg-slate-900/95 p-6 shadow-[0_24px_50px_rgba(15,23,42,0.35)] border border-white/10 text-slate-100">
+      <div className="rounded-3xl bg-panel/80 p-6 shadow-[0_24px_50px_rgba(7,26,47,0.35)] border border-white/10 text-slate-100">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <p className="text-sm uppercase tracking-[0.28em] text-sky-300">Event announcement</p>
@@ -482,14 +482,14 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
           </div>
           <p className="text-sm text-slate-400">{statusMessage}</p>
         </div>
-        <div className="mt-4 rounded-[28px] bg-slate-950/90 p-5 text-sm leading-7 text-slate-200 break-words whitespace-pre-line">
+        <div className="mt-4 rounded-[28px] bg-panel/70 p-5 text-sm leading-7 text-slate-200 break-words whitespace-pre-line">
           {attendanceWindow.announcement || 'No announcement has been published yet. This space is reserved for important student updates.'}
         </div>
       </div>
 
-      <div className="overflow-hidden rounded-3xl bg-white/95 shadow-xl shadow-slate-200/50">
-        <table className="min-w-full divide-y divide-slate-200 text-left text-sm">
-          <thead className="bg-slate-50 text-slate-600">
+      <div className="overflow-hidden rounded-3xl bg-panel/80 shadow-xl shadow-black/30">
+        <table className="min-w-full divide-y divide-panel/60 text-left text-sm">
+          <thead className="bg-panel/70 text-slate-300">
             <tr>
               <th className="px-6 py-4">Event</th>
               <th className="px-6 py-4">Date</th>
@@ -498,13 +498,13 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
               <th className="px-6 py-4">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-200 bg-white">
+          <tbody className="divide-y divide-panel/60 bg-panel/70">
             {events.map((event) => (
-              <tr key={event.id} className={event.id === activeEventId ? 'bg-slate-50' : ''}>
-                <td className="px-6 py-4 font-medium text-slate-900">{event.title}</td>
-                <td className="px-6 py-4 text-slate-600">{event.date}</td>
-                <td className="px-6 py-4 text-slate-600">{event.location}</td>
-                <td className="px-6 py-4 text-slate-700">{event.status}</td>
+              <tr key={event.id} className={event.id === activeEventId ? 'bg-panel/80' : ''}>
+                <td className="px-6 py-4 font-medium text-slate-100">{event.title}</td>
+                <td className="px-6 py-4 text-slate-300">{event.date}</td>
+                <td className="px-6 py-4 text-slate-300">{event.location}</td>
+                <td className="px-6 py-4 text-slate-200">{event.status}</td>
                 <td className="px-6 py-4">
                   <div className="flex flex-wrap gap-2">
                   <button
@@ -513,7 +513,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
                       setActiveEventId(event.id);
                       setIsEditingEvent(false);
                     }}
-                    className="rounded-full bg-slate-100 px-4 py-2 text-xs font-medium text-slate-700 transition hover:bg-slate-200"
+                    className="rounded-full bg-panel/60 px-4 py-2 text-xs font-medium text-slate-100 transition hover:bg-panel/80"
                   >
                     View
                   </button>
@@ -521,7 +521,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
                     <button
                       type="button"
                       onClick={() => handleDeleteEvent(event)}
-                      className="inline-flex items-center gap-1 rounded-full bg-rose-50 px-4 py-2 text-xs font-medium text-rose-700 transition hover:bg-rose-100"
+                      className="inline-flex items-center gap-1 rounded-full bg-rose-500/10 px-4 py-2 text-xs font-medium text-rose-200 transition hover:bg-rose-500/20"
                     >
                       <Trash2 className="h-3.5 w-3.5" />
                       Delete
@@ -533,7 +533,7 @@ const EventsPage = ({ user, events: appEvents, attendanceWindow = {}, onSaveEven
             ))}
             {events.length === 0 && (
               <tr>
-                <td colSpan="5" className="px-6 py-10 text-center text-slate-500">
+                <td colSpan="5" className="px-6 py-10 text-center text-slate-400">
                   No events yet. Create a new event to start scheduling attendance.
                 </td>
               </tr>

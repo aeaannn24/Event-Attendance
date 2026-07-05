@@ -132,8 +132,8 @@ const ChatWidget = ({ user, students = [], messages = [], onSendMessage, onDelet
   return (
     <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3">
       {isOpen && (
-        <section className="w-[min(calc(100vw-2rem),460px)] overflow-hidden rounded-[28px] border border-slate-700/80 bg-slate-950 shadow-[0_24px_80px_rgba(2,6,23,0.55)]">
-          <div className="flex items-center justify-between gap-3 border-b border-slate-800 bg-slate-900/95 px-4 py-3">
+        <section className="w-[min(calc(100vw-2rem),460px)] overflow-hidden rounded-[28px] border border-panel/70 bg-panel p-0 shadow-[0_24px_80px_rgba(7,26,47,0.55)]">
+          <div className="flex items-center justify-between gap-3 border-b border-panel/70 bg-panel/70 px-4 py-3">
             <div className="min-w-0 flex-1">
               <p className="text-sm font-semibold text-slate-100">{selectedContact?.name || 'Select contact'}</p>
               <p className="text-xs text-slate-500">{selectedContact?.subtitle}</p>
@@ -141,7 +141,7 @@ const ChatWidget = ({ user, students = [], messages = [], onSendMessage, onDelet
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-800 bg-slate-950 text-slate-300 transition hover:text-white hover:bg-slate-800"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-panel/70 bg-panel/70 text-slate-300 transition hover:text-white hover:bg-panel/80"
               aria-label="Close chat"
             >
               <X className="h-4 w-4" />
@@ -149,7 +149,7 @@ const ChatWidget = ({ user, students = [], messages = [], onSendMessage, onDelet
           </div>
 
           <div className="grid max-h-[34rem] grid-cols-[135px_1fr]">
-            <aside className="border-r border-slate-800 bg-slate-900/60 p-3">
+            <aside className="border-r border-panel/70 bg-panel/60 p-3">
               <div className="flex items-center gap-2 rounded-full border border-slate-800 bg-slate-950 px-3 py-2">
                 <Search className="h-3.5 w-3.5 text-slate-500" />
                 <input
@@ -172,8 +172,8 @@ const ChatWidget = ({ user, students = [], messages = [], onSendMessage, onDelet
                       onClick={() => setSelectedContactId(contact.id)}
                       className={`w-full rounded-2xl px-3 py-2 text-left transition ${
                         isSelected
-                          ? 'bg-sky-500/20 border border-sky-500/40'
-                          : 'bg-slate-900 hover:bg-slate-800 border border-slate-800/50'
+                          ? 'bg-accent/15 border border-accent/40 text-accent'
+                          : 'bg-panel/60 hover:bg-panel/80 border border-panel/60'
                       }`}
                     >
                       <div className="flex items-start justify-between gap-2">
@@ -187,7 +187,7 @@ const ChatWidget = ({ user, students = [], messages = [], onSendMessage, onDelet
                           )}
                         </div>
                         {unreadCount > 0 && (
-                          <span className="min-w-5 rounded-full bg-rose-500 px-1.5 py-0.5 text-[10px] font-bold text-white flex-shrink-0">
+                          <span className="min-w-5 rounded-full bg-accent px-1.5 py-0.5 text-[10px] font-bold text-white flex-shrink-0">
                             {unreadCount}
                           </span>
                         )}
@@ -208,13 +208,13 @@ const ChatWidget = ({ user, students = [], messages = [], onSendMessage, onDelet
 
                   return (
                     <div key={message.id} className={`flex ${isMine ? 'justify-end' : 'justify-start'}`}>
-                      <div className={`max-w-[92%] rounded-3xl px-4 py-3 text-sm ${isMine ? 'bg-sky-500 text-white' : 'bg-slate-900 text-slate-200'}`}>
+                      <div className={`max-w-[92%] rounded-3xl px-4 py-3 text-sm ${isMine ? 'bg-accent text-white' : 'bg-panel text-slate-200'}`}>
                         <div className="mb-1 flex items-center justify-between gap-3 text-[11px] opacity-80">
                           <span>{isMine ? 'You' : message.senderName}</span>
                           <span title={formatTime(message.timestamp)}>{formatRelativeTime(message.timestamp)}</span>
                         </div>
                         {parent && (
-                          <div className="mb-2 rounded-2xl bg-black/20 px-3 py-2 text-xs opacity-90">
+                          <div className="mb-2 rounded-2xl bg-panel/80 px-3 py-2 text-xs opacity-90">
                             Reply to {parent.senderName}: {parent.text}
                           </div>
                         )}
@@ -222,12 +222,12 @@ const ChatWidget = ({ user, students = [], messages = [], onSendMessage, onDelet
                         {reactionValues.length > 0 && (
                           <div className="mt-2 flex flex-wrap gap-1">
                             {reactionValues.map((reaction, index) => (
-                              <span key={`${message.id}-${reaction}-${index}`} className="rounded-full bg-white/15 px-2 py-0.5 text-xs">{reaction}</span>
+                              <span key={`${message.id}-${reaction}-${index}`} className="rounded-full bg-white/10 px-2 py-0.5 text-xs">{reaction}</span>
                             ))}
                           </div>
                         )}
                         <div className="mt-3 flex flex-wrap items-center gap-1">
-                          <button type="button" onClick={() => setReplyToId(message.id)} className="rounded-full bg-white/10 px-2 py-1 text-[11px] font-semibold">
+                          <button type="button" onClick={() => setReplyToId(message.id)} className="rounded-full bg-panel/70 px-2 py-1 text-[11px] font-semibold">
                             <Reply className="mr-1 inline h-3 w-3" />
                             Reply
                           </button>
@@ -237,13 +237,13 @@ const ChatWidget = ({ user, students = [], messages = [], onSendMessage, onDelet
                               type="button"
                               title={reaction.label}
                               onClick={() => onReactToMessage?.(message.id, reaction.value)}
-                              className="rounded-full bg-white/10 px-2 py-1 text-xs"
+                              className="rounded-full bg-panel/70 px-2 py-1 text-xs"
                             >
                               {reaction.value}
                             </button>
                           ))}
                           {(isMine || currentRole === 'admin') && (
-                            <button type="button" onClick={() => onDeleteMessage?.(message.id)} className="rounded-full bg-white/10 px-2 py-1 text-[11px] font-semibold">
+                            <button type="button" onClick={() => onDeleteMessage?.(message.id)} className="rounded-full bg-panel/70 px-2 py-1 text-[11px] font-semibold">
                               <Trash2 className="mr-1 inline h-3 w-3" />
                               Delete
                             </button>
@@ -254,7 +254,7 @@ const ChatWidget = ({ user, students = [], messages = [], onSendMessage, onDelet
                   );
                 })}
                 {visibleMessages.length === 0 && (
-                  <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-4 text-sm text-slate-400">
+                  <div className="rounded-3xl border border-panel/70 bg-panel/70 p-4 text-sm text-slate-400">
                     No messages yet.
                   </div>
                 )}
@@ -262,7 +262,7 @@ const ChatWidget = ({ user, students = [], messages = [], onSendMessage, onDelet
 
               <form onSubmit={handleSubmit} className="border-t border-slate-800 bg-slate-900/95 p-3">
                 {replyMessage && (
-                  <div className="mb-2 flex items-center justify-between gap-2 rounded-2xl bg-slate-950 px-3 py-2 text-xs text-slate-300">
+                  <div className="mb-2 flex items-center justify-between gap-2 rounded-2xl bg-panel/70 px-3 py-2 text-xs text-slate-300">
                     <span className="truncate">Replying to {replyMessage.senderName}: {replyMessage.text}</span>
                     <button type="button" onClick={() => setReplyToId(null)} className="text-slate-500 hover:text-white">Cancel</button>
                   </div>
@@ -272,9 +272,9 @@ const ChatWidget = ({ user, students = [], messages = [], onSendMessage, onDelet
                     value={draft}
                     onChange={(event) => setDraft(event.target.value)}
                     placeholder={`Message ${selectedContact?.name || 'contact'}`}
-                    className="min-w-0 flex-1 rounded-full border border-slate-800 bg-slate-950 px-4 py-3 text-sm text-slate-100 outline-none placeholder:text-slate-500 focus:border-sky-400"
+                    className="min-w-0 flex-1 rounded-full border border-panel/70 bg-panel/70 px-4 py-3 text-sm text-slate-100 outline-none placeholder:text-slate-500 focus:border-accent"
                   />
-                  <button type="submit" className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-sky-500 text-white transition hover:bg-sky-400" aria-label="Send message">
+                  <button type="submit" className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent text-white transition hover:brightness-95" aria-label="Send message">
                     <Send className="h-4 w-4" />
                   </button>
                 </div>
@@ -287,11 +287,11 @@ const ChatWidget = ({ user, students = [], messages = [], onSendMessage, onDelet
       <button
         type="button"
         onClick={() => setIsOpen((open) => !open)}
-        className="relative inline-flex h-14 w-14 items-center justify-center rounded-full bg-sky-500 text-white shadow-[0_18px_45px_rgba(14,165,233,0.36)] transition hover:bg-sky-400"
+        className="relative inline-flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white shadow-[0_18px_45px_rgba(6,182,212,0.36)] transition hover:brightness-95"
         aria-label="Open chat"
       >
         <MessageCircle className="h-6 w-6" />
-        {unreadCount > 0 && <span className="absolute -right-1 -top-1 min-w-6 rounded-full bg-rose-500 px-1.5 py-0.5 text-xs font-bold text-white">{unreadCount}</span>}
+        {unreadCount > 0 && <span className="absolute -right-1 -top-1 min-w-6 rounded-full bg-accent px-1.5 py-0.5 text-xs font-bold text-white">{unreadCount}</span>}
       </button>
     </div>
   );

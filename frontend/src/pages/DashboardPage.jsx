@@ -56,7 +56,7 @@ const DashboardPage = ({ user, attendanceWindow = {}, attendanceRecords = [], ev
 
   return (
     <div className="space-y-8">
-      <div className="rounded-3xl bg-white/95 p-6 shadow-xl shadow-slate-200/50">
+      <div className="rounded-3xl bg-gradient-to-br from-brand to-panel p-6 shadow-xl shadow-black/30 border border-panel/70">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
             <h1 className="text-2xl font-semibold text-slate-900">
@@ -68,8 +68,8 @@ const DashboardPage = ({ user, attendanceWindow = {}, attendanceRecords = [], ev
                 : 'Review your attendance record, upcoming events, and recent check-ins.'}
             </p>
           </div>
-          <div className="rounded-3xl bg-slate-50 p-4 text-sm text-slate-600 shadow-sm">
-            <span className="font-semibold text-slate-900">Welcome back</span>
+          <div className="rounded-3xl bg-panel/60 p-4 text-sm text-slate-300 shadow-sm">
+            <span className="font-semibold text-white">Welcome back</span>
             <p className="mt-1">{user?.name || 'User'}, here is your latest summary.</p>
           </div>
         </div>
@@ -81,17 +81,17 @@ const DashboardPage = ({ user, attendanceWindow = {}, attendanceRecords = [], ev
         ))}
       </div>
 
-      <div className="rounded-3xl border border-white/10 bg-slate-950/95 p-6 shadow-xl shadow-slate-200/10">
+      <div className="rounded-3xl border border-panel/70 bg-panel/70 p-6 shadow-xl shadow-black/10">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-lg font-semibold text-white">Latest Announcement</h2>
             <p className="mt-2 text-sm text-slate-400">Important attendance window updates and admin messages.</p>
           </div>
-          <span className="rounded-full bg-sky-500/15 px-3 py-1 text-xs font-semibold text-sky-200">
+          <span className="rounded-full bg-accent/15 px-3 py-1 text-xs font-semibold text-accent">
             {attendanceWindow.durationMinutes || 15} minute limit
           </span>
         </div>
-        <div className="mt-5 rounded-[28px] bg-slate-900/90 p-5 text-sm leading-7 text-slate-200 whitespace-pre-line break-words">
+        <div className="mt-5 rounded-[28px] bg-panel/70 p-5 text-sm leading-7 text-slate-200 whitespace-pre-line break-words">
           {attendanceWindow.announcement || 'No announcements have been published yet. Check back here for the latest updates.'}
         </div>
       </div>
@@ -105,7 +105,7 @@ const DashboardPage = ({ user, attendanceWindow = {}, attendanceRecords = [], ev
                 <XAxis dataKey="name" tickLine={false} axisLine={false} />
                 <YAxis allowDecimals={false} tickLine={false} axisLine={false} />
                 <Tooltip />
-                <Line type="monotone" dataKey="attendance" stroke="#2563EB" strokeWidth={3} dot={{ r: 4 }} />
+                <Line type="monotone" dataKey="attendance" stroke="#06B6D4" strokeWidth={3} dot={{ r: 4 }} />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -118,7 +118,7 @@ const DashboardPage = ({ user, attendanceWindow = {}, attendanceRecords = [], ev
                 <XAxis dataKey="name" tickLine={false} axisLine={false} />
                 <YAxis allowDecimals={false} tickLine={false} axisLine={false} />
                 <Tooltip />
-                <Bar dataKey="attendees" fill="#2563EB" radius={[10, 10, 0, 0]} />
+                <Bar dataKey="attendees" fill="#06B6D4" radius={[10, 10, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -126,46 +126,46 @@ const DashboardPage = ({ user, attendanceWindow = {}, attendanceRecords = [], ev
       </div>
 
       <div className="grid gap-6 xl:grid-cols-3">
-        <div className="rounded-3xl bg-white/95 p-6 shadow-xl shadow-slate-200/50">
+        <div className="rounded-3xl bg-panel/70 p-6 shadow-xl shadow-black/20">
           <div className="flex items-center justify-between gap-4">
             <div>
               <h2 className="text-lg font-semibold text-slate-900">{isAdmin ? 'Upcoming Events' : 'Next Scheduled Events'}</h2>
               <p className="mt-2 text-sm text-slate-500">{eventsToday} event(s) scheduled today.</p>
             </div>
-            <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">Active</span>
+            <span className="rounded-full bg-accent/15 px-3 py-1 text-xs font-semibold text-accent">Active</span>
           </div>
           <div className="mt-6 space-y-4">
             {upcomingEvents.map((event) => (
-              <div key={event.id} className="rounded-3xl border border-slate-200 bg-slate-50 p-4">
-                <p className="text-sm text-slate-500">{event.title}</p>
-                <p className="mt-2 text-base font-semibold text-slate-900">{event.location} • {event.date}</p>
+              <div key={event.id} className="rounded-3xl border border-panel/60 bg-panel/70 p-4">
+                <p className="text-sm text-slate-300">{event.title}</p>
+                <p className="mt-2 text-base font-semibold text-slate-100">{event.location} • {event.date}</p>
               </div>
             ))}
-            {upcomingEvents.length === 0 && <p className="text-sm text-slate-500">No upcoming events.</p>}
+            {upcomingEvents.length === 0 && <p className="text-sm text-slate-400">No upcoming events.</p>}
           </div>
         </div>
 
-        <div className="rounded-3xl bg-white/95 p-6 shadow-xl shadow-slate-200/50 xl:col-span-2">
+        <div className="rounded-3xl bg-panel/70 p-6 shadow-xl shadow-black/20 xl:col-span-2">
           <div className="flex items-center justify-between gap-4">
             <div>
               <h2 className="text-lg font-semibold text-slate-900">{isAdmin ? 'Recent Check-ins' : 'Your Recent Attendance'}</h2>
               <p className="mt-2 text-sm text-slate-500">Review the latest attendance activity and session statuses.</p>
             </div>
-            <Link to="/attendance" className="rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-200">
+            <Link to="/attendance" className="rounded-full bg-panel/60 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:bg-panel/80">
               View All
             </Link>
           </div>
           <div className="mt-6 space-y-4">
             {recentAttendanceData.map((item) => (
-              <div key={item.id} className="flex items-center justify-between rounded-3xl border border-slate-200 p-4">
+              <div key={item.id} className="flex items-center justify-between rounded-3xl border border-panel/60 bg-panel/70 p-4">
                 <div>
-                  <p className="text-sm text-slate-500">{isAdmin ? item.studentName : item.eventName}</p>
-                  <p className="mt-1 text-sm text-slate-700">{isAdmin ? item.eventName : item.status}</p>
+                  <p className="text-sm text-slate-300">{isAdmin ? item.studentName : item.eventName}</p>
+                  <p className="mt-1 text-sm text-slate-200">{isAdmin ? item.eventName : item.status}</p>
                 </div>
-                <p className="text-sm font-semibold text-slate-900">{item.submissionTime || '—'}</p>
+                <p className="text-sm font-semibold text-slate-100">{item.submissionTime || '—'}</p>
               </div>
             ))}
-            {recentAttendanceData.length === 0 && <p className="rounded-3xl border border-slate-200 p-4 text-sm text-slate-500">No attendance records yet.</p>}
+            {recentAttendanceData.length === 0 && <p className="rounded-3xl border border-panel/60 p-4 text-sm text-slate-400">No attendance records yet.</p>}
           </div>
         </div>
       </div>

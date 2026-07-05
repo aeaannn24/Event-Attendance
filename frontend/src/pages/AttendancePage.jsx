@@ -39,7 +39,7 @@ const AttendancePage = ({ user, attendanceRecords = [], onDeleteAttendance }) =>
 
   return (
     <div className="min-w-0 space-y-6">
-      <section className="rounded-[32px] border border-slate-800/70 bg-slate-950/80 p-6 shadow-[0_30px_70px_rgba(15,23,42,0.28)] glass-card">
+      <section className="rounded-[32px] border border-panel/70 bg-panel/70 p-6 shadow-[0_30px_70px_rgba(7,26,47,0.28)] glass-card">
         <div className="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
           <div className="min-w-0">
             <h1 className="text-3xl font-semibold tracking-tight text-slate-100">Attendance Records</h1>
@@ -53,7 +53,7 @@ const AttendancePage = ({ user, attendanceRecords = [], onDeleteAttendance }) =>
               value={search}
               onChange={(event) => setSearch(event.target.value)}
               placeholder="Search by student, event, status, or ID"
-              className="w-full rounded-full border border-slate-800/80 bg-slate-900/70 px-4 py-3 text-sm text-slate-100 outline-none placeholder:text-slate-500 focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20"
+              className="w-full rounded-full border border-panel/70 bg-panel/60 px-4 py-3 text-sm text-slate-100 outline-none placeholder:text-slate-500 focus:border-accent focus:ring-2 focus:ring-accent/20"
             />
           </div>
         </div>
@@ -62,7 +62,7 @@ const AttendancePage = ({ user, attendanceRecords = [], onDeleteAttendance }) =>
           <select
             value={selectedEvent}
             onChange={(event) => setSelectedEvent(event.target.value)}
-            className="rounded-full border border-slate-800/70 bg-slate-900/80 px-4 py-2 text-sm text-slate-100 outline-none transition hover:border-slate-600"
+            className="rounded-full border border-panel/70 bg-panel/70 px-4 py-2 text-sm text-slate-100 outline-none transition hover:border-panel/80"
           >
             <option>All Events</option>
             {Array.from(new Set(attendanceRecords.map((record) => record.eventName))).map((eventName) => (
@@ -73,7 +73,7 @@ const AttendancePage = ({ user, attendanceRecords = [], onDeleteAttendance }) =>
             type="date"
             value={filterDate}
             onChange={(event) => setFilterDate(event.target.value)}
-            className="rounded-full border border-slate-800/70 bg-slate-900/80 px-4 py-2 text-sm text-slate-100 outline-none transition hover:border-slate-600"
+            className="rounded-full border border-panel/70 bg-panel/70 px-4 py-2 text-sm text-slate-100 outline-none transition hover:border-panel/80"
           />
           <button
             type="button"
@@ -83,7 +83,7 @@ const AttendancePage = ({ user, attendanceRecords = [], onDeleteAttendance }) =>
               setSearch('');
               setSelectedCourse('All Courses');
             }}
-            className="rounded-full border border-slate-800/70 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-slate-600"
+            className="rounded-full border border-panel/70 bg-panel/70 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-panel/80"
           >
             Clear filters
           </button>
@@ -94,8 +94,8 @@ const AttendancePage = ({ user, attendanceRecords = [], onDeleteAttendance }) =>
               onClick={() => setSelectedCourse(course)}
               className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
                 selectedCourse === course
-                  ? 'border-sky-400 bg-sky-500/15 text-sky-300 shadow-[0_0_0_1px_rgba(56,189,248,0.3)]'
-                  : 'border-slate-800/70 bg-slate-900/80 text-slate-300 hover:border-slate-600 hover:bg-slate-900/95'
+                          ? 'border-accent/40 bg-accent/15 text-accent shadow-[0_0_0_1px_rgba(6,182,212,0.2)]'
+                        : 'border-panel/70 bg-panel/70 text-slate-300 hover:border-panel/80 hover:bg-panel/80'
               }`}
             >
               {course}
@@ -104,15 +104,15 @@ const AttendancePage = ({ user, attendanceRecords = [], onDeleteAttendance }) =>
         </div>
 
         {message && (
-          <div className="mt-5 rounded-3xl border border-sky-500/20 bg-sky-500/10 px-4 py-3 text-sm text-sky-100">
+          <div className="mt-5 rounded-3xl border border-accent/20 bg-accent/10 px-4 py-3 text-sm text-accent">
             {message}
           </div>
         )}
 
-        <div className="mt-6 overflow-hidden rounded-[28px] border border-slate-800/70 bg-slate-950/95 shadow-[0_30px_70px_rgba(15,23,42,0.24)]">
+        <div className="mt-6 overflow-hidden rounded-[28px] border border-panel/70 bg-panel/80 shadow-[0_30px_70px_rgba(7,26,47,0.24)]">
           <div className="overflow-x-auto">
             <table className="min-w-[1080px] text-left text-sm">
-              <thead className="border-b border-slate-800/80 bg-slate-900/90 text-slate-400">
+              <thead className="border-b border-panel/70 bg-panel/70 text-slate-400">
                 <tr>
                   <th className="px-4 py-3">Student ID</th>
                   <th className="px-4 py-3">Student Name</th>
@@ -129,8 +129,8 @@ const AttendancePage = ({ user, attendanceRecords = [], onDeleteAttendance }) =>
               </thead>
               <tbody>
                 {filtered.map((record) => (
-                  <tr key={record.id} className="border-b border-slate-800/80 transition duration-300 hover:bg-slate-900/75">
-                    <td className="px-4 py-4 text-sky-200">{record.studentId}</td>
+                  <tr key={record.id} className="border-b border-panel/70 transition duration-300 hover:bg-panel/80">
+                    <td className="px-4 py-4 text-accent">{record.studentId}</td>
                     <td className="px-4 py-4 text-slate-100">{record.studentName}</td>
                     <td className="px-4 py-4 capitalize text-slate-300">{record.gender || 'male'}</td>
                     <td className="max-w-[260px] truncate px-4 py-4 text-slate-300">{record.course}</td>
@@ -149,7 +149,7 @@ const AttendancePage = ({ user, attendanceRecords = [], onDeleteAttendance }) =>
                       <div className="flex flex-wrap gap-2">
                         <Link
                           to={`/attendance/${record.id}`}
-                          className="inline-flex rounded-full border border-slate-800/80 bg-slate-900/70 px-3 py-2 text-xs font-semibold text-slate-100 transition hover:border-sky-400 hover:text-sky-300"
+                          className="inline-flex rounded-full border border-panel/70 bg-panel/70 px-3 py-2 text-xs font-semibold text-slate-100 transition hover:border-accent hover:text-accent"
                         >
                           Details
                         </Link>
